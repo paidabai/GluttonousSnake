@@ -72,7 +72,6 @@ module.exports = {
                 use:[
                     "style-loader",
                     "css-loader",
-
                     // 引入postcss
                     {
                         loader: "postcss-loader",
