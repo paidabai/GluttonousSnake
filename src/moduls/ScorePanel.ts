@@ -12,7 +12,7 @@ class ScorePanel {
     upScore: number
 
     // 构造函数 设置maxLevel的默认值为10,upScored的默认值为10
-    constructor(maxLevel: number = 10, upScore: number = 10) {
+    constructor(maxLevel: number = 10, upScore: number = 5) {
         this.levelEle = document.getElementById('level')!
         this.scoreEle = document.getElementById('score')!
         this.maxLevel = maxLevel
@@ -22,7 +22,7 @@ class ScorePanel {
     // 加分方法
     addScore() {
         this.scoreEle.innerHTML = ++this.score + ''
-        if (this.score % 5 == 0) this.levelUp()
+        if (this.score % this.upScore == 0) this.levelUp()
     }
 
     // 提升等级方法

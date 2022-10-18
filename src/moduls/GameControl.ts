@@ -9,7 +9,10 @@ class GameControl {
     scorePanel: ScorePanel
 
     // 储存按下键盘的key
-    direction: string = 'ArrowRight'
+    direction: string = ''
+
+    // 记录游戏是否结束
+    isLive = true
 
     constructor() {
         this.snake = new Snake()
@@ -33,6 +36,7 @@ class GameControl {
          ArrowRight
         */
          this.direction = event.key
+         document.getElementById('start')!.style.display = 'none'
     }
 
     // 控制蛇的移动
@@ -57,16 +61,20 @@ class GameControl {
                 break
         }
 
-        this.snake.X = X
-        this.snake.Y = Y
-
         // 判断蛇是否吃到食物
         this.checkEat(X, Y)
 
+        try {
+            this.snake.X = X
+            this.snake.Y = Y
+        } catch (e) {
+            document.getElementById('end')!.style.display = 'block'
+            this.isLive = false
+        }
 
-        setTimeout(() => {
+        this.isLive && setTimeout(() => {
             this.run()
-        },300)
+        },300 - (this.scorePanel.level - 1) * 30)
 
     }
     // 是否吃到食物的方法
