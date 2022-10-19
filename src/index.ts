@@ -3,10 +3,3 @@ import GameControl from "./moduls/GameControl";
 
 
 new GameControl()
-
-
-
-
-
-
-

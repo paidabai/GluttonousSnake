@@ -69,3 +69,39 @@ body {
   text-align: center;
   padding: 10px;
 }
+
+#control {
+  width: 210px;
+  height: 210px;
+  margin: 20px auto;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  font-size: 50px;
+  text-align: center;
+  line-height: 60px;
+    #top {
+      width: 70px;
+      height: 70px;
+      background-color: @bg-color;
+      cursor: pointer;
+    }
+    #down {
+      width: 70px;
+      height: 70px;
+      background-color: @bg-color;
+      cursor: pointer;
+    }
+    #left-right {
+      width: 210px;
+      height: 70px;
+      display: flex;
+      justify-content: space-between;
+        &>div {
+          width: 70px;
+          height: 70px;
+          background-color: @bg-color;
+          cursor: pointer;
+        }
+    }
+}

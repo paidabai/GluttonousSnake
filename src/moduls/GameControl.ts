@@ -14,16 +14,43 @@ class GameControl {
     // 记录游戏是否结束
     isLive = true
 
+    top: HTMLElement
+    down: HTMLElement
+    left: HTMLElement
+    right: HTMLElement
+
     constructor() {
         this.snake = new Snake()
         this.food = new Food()
         this.scorePanel = new ScorePanel()
+        this.top = document.getElementById('top')!
+        this.down = document.getElementById('down')!
+        this.left = document.getElementById('left')!
+        this.right = document.getElementById('right')!
         this.init()
     }
 
     // 初始化游戏，调用后开始游戏
     init = () => {
         document.addEventListener('keydown',this.keydownHandler)
+        window.onload = () => {
+            this.top.addEventListener('click', () => {
+                this.direction = 'ArrowUp'
+                document.getElementById('start')!.style.display = 'none'
+            })
+            this.down.addEventListener('click', () => {
+                this.direction = 'ArrowDown'
+                document.getElementById('start')!.style.display = 'none'
+            })
+            this.left.addEventListener('click', () => {
+                this.direction = 'ArrowLeft'
+                document.getElementById('start')!.style.display = 'none'
+            })
+            this.right.addEventListener('click', () => {
+                this.direction = 'ArrowRight'
+                document.getElementById('start')!.style.display = 'none'
+            })
+        }
         this.run()
     }
 

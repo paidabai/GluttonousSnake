@@ -68,6 +68,7 @@ module.exports = {
 
             // 设置less文件的处理
             {
+                // test 属性，用于标识出应该被对应的 loader 进行转换的某个或某些文件。
                 test: /\.less$/,
                 use:[
                     "style-loader",
