@@ -45,6 +45,9 @@ class Snake{
         this.moveBody()
 
         this.head.style.left = value + 'px'
+
+        //检测是否撞到自己
+        this.checkHeadBody()
     }
 
     set Y(value){
@@ -68,6 +71,9 @@ class Snake{
         this.moveBody()
 
         this.head.style.top = value + 'px'
+
+        //检测是否撞到自己
+        this.checkHeadBody()
     }
 
     // 添加蛇身体的方法
@@ -97,6 +103,16 @@ class Snake{
             // 设置到当前的身体
             (this.bodies[i] as HTMLElement).style.left = X + 'px';
             (this.bodies[i] as HTMLElement).style.top = Y + 'px';
+        }
+    }
+    
+    // 检测蛇是否撞到身体(检测是否和蛇头的坐标发生重叠)
+    checkHeadBody() {
+        for (let i = 1; i < this.bodies.length; i++) {
+            let bd = this.bodies[i] as HTMLElement
+            if (this.X === bd.offsetLeft && this.Y === bd.offsetTop) {
+                throw new Error('撞到了自己')
+            }
         }
     }
 }
